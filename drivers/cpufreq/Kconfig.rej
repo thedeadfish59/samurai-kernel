@@ -1,0 +1,23 @@
+--- drivers/cpufreq/Kconfig	2011-11-30 01:52:01.000000000 -0600
++++ drivers/cpufreq/Kconfig	2012-07-06 17:45:58.000000000 -0500
+@@ -132,6 +145,20 @@
+ 	  you to get a full dynamic cpu frequency capable system by simply
+ 	  loading your cpufreq low-level hardware driver, using the
+ 	  'interactive' governor for latency-sensitive workloads.
++config CPU_FREQ_DEFAULT_GOV_INTERACTIVEX
++	bool "interactiveX"
++	select CPU_FREQ_GOV_INTERACTIVEX
++	help
++	  Use the CPUFreq governor 'interactiveX' as default. This allows
++	  you to get a full dynamic cpu frequency capable system by simply
++	  loading your cpufreq low-level hardware driver, using the
++	  'interactiveX' governor for latency-sensitive workloads.
++
++config CPU_FREQ_DEFAULT_GOV_LIONHEART
++	bool "lionheart"
++	select CPU_FREQ_GOV_LIONHEART
++	help
++	  Use the CPUFreq governor 'Lionheart' as default.
+ 
+ endchoice
+ 

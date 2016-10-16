@@ -1,0 +1,18 @@
+--- include/linux/cpufreq.h	2011-11-30 01:51:52.000000000 -0600
++++ include/linux/cpufreq.h	2012-07-06 17:49:32.474953576 -0500
+@@ -375,9 +378,14 @@
+ #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_INTERACTIVE)
+ extern struct cpufreq_governor cpufreq_gov_interactive;
+ #define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_interactive)
++#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_INTERACTIVEX)
++extern struct cpufreq_governor cpufreq_gov_interactivex;
++#define CPUFREQ_DEFAULT_GOVERNOR  (&cpufreq_gov_interactivex)
++#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_LIONHEART)
++extern struct cpufreq_governor cpufreq_gov_lionheart;
++#define CPUFREQ_DEFAULT_GOVERNOR  (&cpufreq_gov_lionheart)
+ #endif
+ 
+-
+ /*********************************************************************
+  *                     FREQUENCY TABLE HELPERS                       *
+ 

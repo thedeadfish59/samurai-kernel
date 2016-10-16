@@ -1,0 +1,122 @@
+#!/bin/bash
+
+# clear screen
+  clear 
+
+# location
+  export DIR=`readlink -f .`;
+  export PARENT_DIR=`readlink -f ${DIR}/..`;
+
+# color
+  BGRED=`echo -e "\033[41m"`
+  NORMAL=`echo -e "\033[m"`
+
+# menu
+  echo "${BGRED} bcm21553-common kernel build script${NORMAL}"
+  echo " "
+  echo " b. build"
+  echo " c. clean"
+  echo " "
+  echo " r. restart script"
+  echo " x. exit script"
+# Read the letter the user gives
+  echo
+  read enterLetter
+
+# build
+  if [ "$enterLetter" == "b" ]
+    then
+
+    # devices menu
+      echo "${BGRED} Choose your device${NORMAL}"
+      echo " "
+      echo " 1. totoro"
+      echo " 2. cooperve"
+      echo " 3. tassve"
+      echo " "
+      echo " m. main menu"
+      echo " x. exit script"
+    # Read the letter the user gives
+      echo
+      read enterLetter
+    # totoro
+      if [ "$enterLetter" == "1" ]
+        then
+        VARIANT="totoro"
+    # cooperve
+      elif [ "$enterLetter" == "2" ]
+        then
+        VARIANT="cooperve"
+    # tassve
+      elif [ "$enterLetter" == "3" ]
+        then
+         VARIANT="tassve"
+    # main menu
+      elif [ "$enterLetter" == "m" ]
+        then
+        $DIR/menu
+    # Exit
+      elif [ "$enterLetter" == "x" ]
+        then
+        exit 0
+    # Other choice
+      else
+        echo "Invalid option, choose your device."
+        $DIR/menu
+    fi
+
+    # remove previous zImage files
+    if [ -e $PARENT_DIR/zImage ]; then
+      rm $PARENT_DIR/zImage;
+    fi;
+
+    #name
+    export KBUILD_BUILD_USER=raisul2010.5396
+    export KBUILD_BUILD_HOST=lubuntu
+
+    # kernel config
+    export ARCH=arm;
+    export KERNEL_CONFIG="cyanogenmod_${VARIANT}_defconfig";
+
+    # system compiler
+    export CROSS_COMPILE=$PARENT_DIR/arm-eabi-linaro-4.6.2/bin/arm-eabi-;
+
+    # build
+    export USER=`whoami`
+    export TMPFILE=`mktemp -t`;
+
+    export NUMBEROFCPUS=`grep 'processor' /proc/cpuinfo | wc -l`;
+
+    make $KERNEL_CONFIG;
+    make -j$NUMBEROFCPUS zImage
+
+    # final Touch for Kernel
+    if [ -e $DIR/arch/arm/boot/zImage ]; then
+      cp $DIR/arch/arm/boot/zImage $PARENT_DIR/zImage;
+    fi;
+    stat $PARENT_DIR/zImage || exit 1;
+
+# clean
+  elif [ "$enterLetter" == "c" ]
+    then
+    # system compiler
+    export CROSS_COMPILE=$PARENT_DIR/arm-eabi-linaro-4.6.2/bin/arm-eabi-;
+    make clean
+    make mrproper
+    $DIR/menu
+
+# Restart
+  elif [ "$enterLetter" == "r" ]
+    then
+    $DIR/menu
+
+# Exit
+  elif [ "$enterLetter" == "x" ]
+    then
+    exit 0
+
+# Other choice
+  else
+    echo "Invalid option."
+    $DIR/menu
+fi
