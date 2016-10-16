@@ -1,3 +1,31 @@
+#Samurai Kernel for Samsung Galaxy Y GT-S5360
+
+Kernel source was forked from androidarmv6/android_kernel_samsung_bcm21553-common , modified later, added OC freq, schedulers, 
+patched via several patches and optimized, you can build from this source but dont forget to give credits 
+
+#Info:
+Kernel version:
+2.6.35.14
+Freqs:
+156 Mhz
+312 Mhz
+468 Mhz
+624 Mhz
+832 Mhz
+936 Mhz
+1124 Mhz
+
+
+#Credits:
+-My Almighty 
+-psyke83 and androidarmv6 team
+-mohammad92 for answering my noob questions and guiding me
+-knone1
+	
+	
+#License:
+
+
 	Linux kernel release 2.6.xx <http://kernel.org/>
 
 These are the release notes for Linux version 2.6.  Read them carefully,
