@@ -4,9 +4,7 @@ Kernel source was forked from http://github.com/androidarmv6/android_kernel_sams
 patched via several patches and optimized, you can build from this source but dont forget to give credits 
 
 #Info:
-Kernel version:
-
-2.6.35.14
+Kernel version: 2.6.35.14
 
 Freqs:
 
