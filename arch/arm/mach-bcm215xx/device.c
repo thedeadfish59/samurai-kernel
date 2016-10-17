@@ -549,8 +549,8 @@ struct platform_device bcm215xx_lcdc_device = {
 };
 #endif
 
-//#define BCM_CORECLK_TURBOB	BCM21553_CORECLK_KHZ_1124
-#define BCM_CORECLK_TURBOA	BCM21553_CORECLK_KHZ_936
+#define BCM_CORECLK_TURBOB	BCM21553_CORECLK_KHZ_1124
+//#define BCM_CORECLK_TURBOA	BCM21553_CORECLK_KHZ_936
 #define BCM_CORECLK_TURBO	BCM21553_CORECLK_KHZ_832
 #define BCM_CORE_CLK_NORMAL	BCM21553_CORECLK_KHZ_312
 #define BCM_CORE_CLK_LOWA	BCM21553_CORECLK_KHZ_156
@@ -571,8 +571,8 @@ enum {
 	BCM_MEDB_MODE,
 //	BCM_MEDC_MODE,
 	BCM_TURBO_MODE,
-	BCM_TURBOA_MODE,
-//	BCM_TURBOB_MODE,
+//	BCM_TURBOA_MODE,
+	BCM_TURBOB_MODE,
 };
 
 /* Voltage-Frequency mapping for BCM21553 CPU0 */
@@ -583,8 +583,8 @@ static struct bcm_freq_tbl bcm215xx_cpu0_freq_tbl[] = {
 	FTBL_INIT(BCM_CORE_CLK_MEDB / 1000, 1220000),
 //	FTBL_INIT(BCM_CORE_CLK_MEDC / 1000, 1240000),
 	FTBL_INIT(BCM_CORECLK_TURBO / 1000, 1300000),
-	FTBL_INIT(BCM_CORECLK_TURBOA / 1000, 1320000),
-//	FTBL_INIT(BCM_CORECLK_TURBOB / 1000, 1320000),
+//	FTBL_INIT(BCM_CORECLK_TURBOA / 1000, 1320000),
+	FTBL_INIT(BCM_CORECLK_TURBOB / 1000, 1320000),
 };
 /* BCM21553 CPU info */
 static struct bcm_cpu_info bcm215xx_cpu_info[] = {
@@ -619,8 +619,8 @@ struct platform_device bcm21553_cpufreq_drv = {
  *********************************************************************/
 
 static struct bcm21553_cpufreq_gov_plat bcm21553_cpufreq_gov_plat = {
-//	.freq_turbob = BCM_CORECLK_TURBOB,
-	.freq_turboa = BCM_CORECLK_TURBOA,
+	.freq_turbob = BCM_CORECLK_TURBOB,
+//	.freq_turboa = BCM_CORECLK_TURBOA,
 	.freq_turbo = BCM_CORECLK_TURBO,
 	.freq_medb = BCM_CORE_CLK_MEDB,
 	.freq_meda = BCM_CORE_CLK_MEDA,
@@ -702,7 +702,7 @@ static void bcm215xx_avs_notify(int silicon_type)
 		meda = part_type_ss.nm2_normal_voltage;
 		medb = part_type_ss.nm2_turbo_voltage;
 		turbo = part_type_ss.nm2_normal_voltage;
-	//	turbob = part_type_ss.nm2_turbo_voltage;
+		turbob = part_type_ss.nm2_turbo_voltage;
 		break;
 
 	case SILICON_TYPE_TYPICAL:
@@ -711,7 +711,7 @@ static void bcm215xx_avs_notify(int silicon_type)
 		meda = part_type_tt.nm2_turbo_voltage;
 		medb = part_type_tt.nm2_normal_voltage;
 		turbo = part_type_tt.nm2_turbo_voltage;
-	    //turbob = part_type_tt.nm2_turbo_voltage;
+	        turbob = part_type_tt.nm2_turbo_voltage;
 		break;
 
 	case SILICON_TYPE_FAST:
@@ -720,7 +720,7 @@ static void bcm215xx_avs_notify(int silicon_type)
 		meda = part_type_ff.nm2_normal_voltage;
 		medb = part_type_ff.nm2_turbo_voltage;
 		turbo = part_type_ff.nm2_normal_voltage;
-	//	turbob = part_type_ff.nm2_turbo_voltage;
+		turbob = part_type_ff.nm2_turbo_voltage;
 		break;
 
 	default:
@@ -729,7 +729,7 @@ static void bcm215xx_avs_notify(int silicon_type)
 		meda = part_type_ss.nm2_normal_voltage;
 		medb = part_type_ss.nm2_turbo_voltage;
 		turbo = part_type_ss.nm2_normal_voltage;
-	//	turbob = part_type_ss.nm2_turbo_voltage;
+	        turbob = part_type_ss.nm2_turbo_voltage;
 		break;
 	}
 
@@ -744,8 +744,8 @@ static void bcm215xx_avs_notify(int silicon_type)
 			(u32)normal;		
 		bcm215xx_cpu0_freq_tbl[BCM_TURBO_MODE].cpu_voltage =
 			(u32)turbo;
-	//	bcm215xx_cpu0_freq_tbl[BCM_TURBOB_MODE].cpu_voltage =
-	//		(u32)turbo;
+		bcm215xx_cpu0_freq_tbl[BCM_TURBOB_MODE].cpu_voltage =
+			(u32)turbo;
 	}
 }
 #else
