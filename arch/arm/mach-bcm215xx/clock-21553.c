@@ -12,7 +12,7 @@
 * software in any way with any other Broadcom software provided under a license
 * other than the GPL, without Broadcom's express prior written consent.
 *******************************************************************************/
-
+//Disabled 1124 for unstability
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/list.h>
@@ -602,7 +602,7 @@ int bcm21553_arm11_set_rate(struct clk *clk, unsigned long val)
 //	arm11_freq[4] = (apps_pll_freq*5)/8;	/*780 MHz*/
 	arm11_freq[4] = (apps_pll_freq*2)/3;	/*832 MHz*/
 	arm11_freq[5] = (apps_pll_freq*3)/4;	/*936 MHz*/
-	arm11_freq[6] = (apps_pll_freq*5)/6;	/*1124 MHz*/
+//	arm11_freq[6] = (apps_pll_freq*5)/6;	/*1124 MHz*/
 //	arm11_freq[6] = apps_pll_freq;	/*1248 MHz*/
 	
 
@@ -665,7 +665,7 @@ long bcm21553_arm11_round_rate(struct clk *clk, unsigned long desired_val)
 //	arm11_freq[4] = (apps_pll_freq*5)/8;
 	arm11_freq[4] = (apps_pll_freq*2)/3;
 	arm11_freq[5] = (apps_pll_freq*3)/4; /*936 MHz*/
-	arm11_freq[6] = (apps_pll_freq*5)/6; /*1124 MHz*/
+//	arm11_freq[6] = (apps_pll_freq*5)/6; /*1124 MHz*/
 //	arm11_freq[6] = apps_pll_freq;	/*1248 MHz*/
 
 	return (long)bcm21553_generic_round_rate(desired_val,
