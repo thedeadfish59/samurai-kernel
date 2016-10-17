@@ -12,7 +12,7 @@
 * software in any way with any other Broadcom software provided under a license
 * other than the GPL, without Broadcom's express prior written consent.
 *******************************************************************************/
-
+//Disabled 1124 for unstability, for samurai kernel
 #ifndef BCM21553_CPUFREQ_GOV_H
 #define BCM21553_CPUFREQ_GOV_H
 
@@ -26,7 +26,7 @@ enum {
 	BCM21553_CORECLK_KHZ_624 = (624U * 1000),
 	BCM21553_CORECLK_KHZ_832 = (832U * 1000),
 	BCM21553_CORECLK_KHZ_936 = (936U * 1000),
-	BCM21553_CORECLK_KHZ_1124 = (1124U * 1000),
+//	BCM21553_CORECLK_KHZ_1124 = (1124U * 1000),
 };
 
 struct bcm21553_cpufreq_gov_plat {
