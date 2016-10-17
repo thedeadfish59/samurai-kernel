@@ -20,9 +20,6 @@ Freqs:
 
 936 Mhz
 
-1124 Mhz
-
-
 
 #Credits:
 -My Almighty 
