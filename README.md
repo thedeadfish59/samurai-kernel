@@ -31,6 +31,8 @@ Freqs:
 
 -mohammad92 for answering my noob questions and guiding me
 
+-Team ARM core
+
 -knone1
 	
 	
