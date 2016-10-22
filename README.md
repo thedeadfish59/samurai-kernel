@@ -18,7 +18,7 @@ Freqs:
 
 832 Mhz
 
-936 Mhz
+1124 Mhz
 
 
 #Credits:
