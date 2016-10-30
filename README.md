@@ -1,4 +1,4 @@
-#Samurai Kernel for Samsung Galaxy Y GT-S5360
+#Samurai Kernel for Samsung Galaxy Y GT-S5360/ Ace 5830i(totoro/cooperve common source)
 
 Kernel source was forked from http://github.com/androidarmv6/android_kernel_samsung_bcm21553-common , modified later, added OC freq, schedulers, 
 patched via several patches and optimized, you can build from this source but dont forget to give credits 
